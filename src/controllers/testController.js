@@ -1,7 +1,20 @@
+/*
+ *  *******************************************************************************
+ *  * Copyright (c) 2018 Edgeworx, Inc.
+ *  *
+ *  * This program and the accompanying materials are made available under the
+ *  * terms of the Eclipse Public License v. 2.0 which is available at
+ *  * http://www.eclipse.org/legal/epl-2.0
+ *  *
+ *  * SPDX-License-Identifier: EPL-2.0
+ *  *******************************************************************************
+ *
+ */
+
 const TestService = require('./../services/testService');
 const AuthDecorator = require('./../decorators/authorizationDecorator');
 
-async function _testEndPoint(req, res) {
+async function _testEndPoint(req) {
   //getting req params
   let params = {};
   params.bodyParams = req.body;
@@ -10,7 +23,7 @@ async function _testEndPoint(req, res) {
   return await TestService.doSmth(1);
 }
 
-const testEndPoint = AuthDecorator.checkUserExistance(_testEndPoint);
+const testEndPoint = AuthDecorator.checkAuthorization(_testEndPoint);
 
 module.exports = {
   testEndPoint: testEndPoint

@@ -1,5 +1,19 @@
+/*
+ *  *******************************************************************************
+ *  * Copyright (c) 2018 Edgeworx, Inc.
+ *  *
+ *  * This program and the accompanying materials are made available under the
+ *  * terms of the Eclipse Public License v. 2.0 which is available at
+ *  * http://www.eclipse.org/legal/epl-2.0
+ *  *
+ *  * SPDX-License-Identifier: EPL-2.0
+ *  *******************************************************************************
+ *
+ */
+
 const TestController = require('./../controllers/testController');
-const ResponceStatusCodeDecorator = require('../decorators/responceDecorator');
+const ResponseDecorator = require('../decorators/responseDecorator');
+const Errors = require('../utils/errors');
 
 module.exports = [
   {
@@ -9,20 +23,20 @@ module.exports = [
       const errDescr = [
         {
           code: 400,
-          messages: ['smth undef', 'smth else undef'],
+          errors: [],
 
         },
         {
           code: 401,
-          messages: ['authorization failed']
+          errors: [Errors.AuthenticationError]
         },
         {
           code: 500,
-          messages: ['msg1', 'msg2']
+          messages: []
         },
       ];
 
-      const testEndPoint = ResponceStatusCodeDecorator.handleErrors(TestController.testEndPoint, errDescr);
+      const testEndPoint = ResponseDecorator.handleErrors(TestController.testEndPoint, 200, errDescr);
 
       let resObj = await testEndPoint(req, res);
 
