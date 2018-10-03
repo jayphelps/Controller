@@ -31,10 +31,6 @@ module.exports = (sequelize, DataTypes) => {
     emailActivated: {
       type: DataTypes.BOOLEAN,
       field: 'email_activated'
-    },
-    userAccessToken: {
-      type: DataTypes.TEXT,
-      field: 'user_access_token'
     }
   }, {
     timestamps: false,
@@ -42,6 +38,10 @@ module.exports = (sequelize, DataTypes) => {
   });
   User.associate = function(models) {
 
+    User.hasOne(models.AccessToken, {
+      foreignKey: 'user_id',
+      as: 'accessToken'
+    });
 
   };
   return User;
