@@ -38,7 +38,7 @@ module.exports = [
 
       const testEndPoint = ResponseDecorator.handleErrors(TestController.testEndPoint, 200, errDescr);
 
-      let resObj = await testEndPoint(req, res);
+      let resObj = await testEndPoint(req);
 
       res
         .status(resObj.code)

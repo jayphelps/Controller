@@ -15,7 +15,7 @@
 const models = require('./../sequelize/models');
 const User = models.User;
 
-async function _doSmth(x, transaction) {
+async function _doSmth(x, user, transaction) {
   console.log(transaction);
   console.log(x);
   let t = await User.findAll();

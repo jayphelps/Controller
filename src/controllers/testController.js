@@ -14,16 +14,16 @@
 const TestService = require('./../services/testService');
 const AuthDecorator = require('./../decorators/authorizationDecorator');
 
-async function _testEndPoint(req) {
+async function _testEndPoint(req, user) {
   //getting req params
   let params = {};
   params.bodyParams = req.body;
 
   //calling service function. always only one!
-  return await TestService.doSmth(1);
+  return await TestService.doSmth(1, user);
 }
 
-const testEndPoint = AuthDecorator.checkAuthorization(_testEndPoint);
+const testEndPoint = AuthDecorator.checkAuthToken(_testEndPoint);
 
 module.exports = {
   testEndPoint: testEndPoint
