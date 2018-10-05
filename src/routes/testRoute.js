@@ -32,7 +32,7 @@ module.exports = [
         },
         {
           code: 500,
-          messages: []
+          errors: []
         },
       ];
 

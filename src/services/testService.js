@@ -12,19 +12,23 @@
 *
 */
 
-const models = require('./../sequelize/models');
-const User = models.User;
+const TranSactionDecorator = require('../decorators/transactionDecorator');
+const UserManager = require('../sequelize/managers/userManager');
 
 async function _doSmth(x, user, transaction) {
   console.log(transaction);
   console.log(x);
-  let t = await User.findAll();
-  console.log(t[0].email);
+  let t = await UserManager.findByAccessToken('ttt', transaction);
+  let u1 = await UserManager.create({id:2, firstName: 'u1'}, transaction);
+  let u2 = await UserManager.create({id:3, firstName: 'u2'}, transaction);
+  console.log(t.email);
   // let res = await longFunction(x);
   return t;
 }
 
+const doSmthWithTransaction = TranSactionDecorator.generateTransaction(_doSmth);
+
 module.exports = {
-  doSmth : _doSmth
+  doSmthWithTransaction : doSmthWithTransaction,
 };
 

@@ -20,7 +20,7 @@ async function _testEndPoint(req, user) {
   params.bodyParams = req.body;
 
   //calling service function. always only one!
-  return await TestService.doSmth(1, user);
+  return await TestService.doSmthWithTransaction(1, user);
 }
 
 const testEndPoint = AuthDecorator.checkAuthToken(_testEndPoint);
