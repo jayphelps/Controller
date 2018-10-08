@@ -12,8 +12,8 @@
 *
 */
 
-const TranSactionDecorator = require('../decorators/transactionDecorator');
-const UserManager = require('../sequelize/managers/userManager');
+const TranSactionDecorator = require('../decorators/transaction-decorator');
+const UserManager = require('../sequelize/managers/user-manager');
 
 async function _doSmth(x, user, transaction) {
   console.log(transaction);

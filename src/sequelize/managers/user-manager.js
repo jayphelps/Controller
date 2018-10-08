@@ -1,3 +1,4 @@
+const AppHelper = require('../../helpers/app-helper')
 const BaseManager = require('./base-manager');
 const models = require('./../models');
 const User = models.User;
@@ -21,6 +22,7 @@ class UserManager extends BaseManager {
   }
 
   findByAccessToken(token) {
+
     return User.find({
       include: [{
         model: AccessToken,

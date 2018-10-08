@@ -11,8 +11,8 @@
  *
  */
 
-const TestService = require('./../services/testService');
-const AuthDecorator = require('./../decorators/authorizationDecorator');
+const TestService = require('./../services/test-service');
+const AuthDecorator = require('./../decorators/authorization-decorator');
 
 async function _testEndPoint(req, user) {
   //getting req params

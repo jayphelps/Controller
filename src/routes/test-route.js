@@ -11,9 +11,9 @@
  *
  */
 
-const TestController = require('./../controllers/testController');
-const ResponseDecorator = require('../decorators/responseDecorator');
-const Errors = require('../utils/errors');
+const TestController = require('./../controllers/test-controller');
+const ResponseDecorator = require('../decorators/response-decorator');
+const Errors = require('../helpers/errors');
 
 module.exports = [
   {
