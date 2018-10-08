@@ -12,9 +12,9 @@
  */
 const logger = require('../logger');
 const config = require('../config');
-const UserManager = require('../sequelize/managers/userManager');
-const AccessTokenManager = require('../sequelize/managers/accessTokenManager');
-const Errors = require('../utils/errors');
+const UserManager = require('../sequelize/managers/user-manager');
+const AccessTokenManager = require('../sequelize/managers/access-token-manager');
+const Errors = require('../helpers/errors');
 
 function checkAuthToken(f) {
   return async function() {
@@ -37,7 +37,7 @@ function checkAuthToken(f) {
     }
 
     fArgs.push(user);
-    AccessTokenManager.updateExpirationTime(user.accessToken.id, user.accessToken.expirationTime + config.get('Settings:UserTokenExpirationInterval') * 60 * 1000);
+    AccessTokenManager.updateExpirationTime(user.accessToken.id, user.accessToken.expirationTime + config.get('Settings:UserTokenExpirationIntervalSeconds') * 1000);
     return await f.apply(this, fArgs);
   }
 }
