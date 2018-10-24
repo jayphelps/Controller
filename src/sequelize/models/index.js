@@ -10,13 +10,15 @@ const db = {};
 
 let sequelize;
 
-//used because sequelize doesn't work with relative path correctly
-config.storage = path.resolve(__dirname, '../' + config.storage);
-
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  sequelize = new Sequelize(config.database, config.username, config.password, {
+    host: config.host,
+    dialect: config.dialect,
+    operatorsAliases: config.operatorsAliases,
+    pool: config.pool
+  });
 }
 
 fs

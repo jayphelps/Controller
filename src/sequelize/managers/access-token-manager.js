@@ -14,7 +14,6 @@
 const BaseManager = require('./base-manager');
 const models = require('./../models');
 const AccessToken = models.AccessToken;
-const AppHelper = require('../../helpers/app-helper');
 
 class accessTokenManager extends BaseManager {
 

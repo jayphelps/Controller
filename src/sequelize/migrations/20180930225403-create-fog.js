@@ -181,12 +181,12 @@ module.exports = {
       },
       isReadyToUpgrade: {
         type: Sequelize.BOOLEAN,
-        defaultValue: 1,
+        defaultValue: true,
         field: "is_ready_to_upgrade"
       },
       isReadyToRollback: {
         type: Sequelize.BOOLEAN,
-        defaultValue: 0,
+        defaultValue: false,
         field: "is_ready_to_rollback"
       },
       statusFrequency: {
@@ -211,7 +211,7 @@ module.exports = {
       },
       watchdogEnabled: {
         type: Sequelize.BOOLEAN,
-        defaultValue: 1,
+        defaultValue: true,
         field: 'isolated_docker_container'
       },
       createdAt: {
